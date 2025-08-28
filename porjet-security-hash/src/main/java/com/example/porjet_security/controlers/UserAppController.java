@@ -14,6 +14,4 @@ public class UserAppController {
     public String userApp() throws Exception {
         return userRepository.findAll().toString();
     }
-
-
 }

@@ -1,5 +1,8 @@
 package com.example.porjet_security;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -7,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.HexFormat;
 import java.util.List;
 
@@ -38,6 +42,7 @@ public class PorjetSecurityApplication {
 	}
 
 	public static void main(String[] args) throws NoSuchAlgorithmException {
+		//TP1
 		List<String> prenoms = List.of("Sarah", "Mohamed", "Clara", "Hugo", "Léa");
 
 		for (String prenom : prenoms) {
@@ -54,6 +59,24 @@ public class PorjetSecurityApplication {
 			System.out.println(prenom + " BCrypt : " + hash3);
 
 		}
+
+		//TP2 C
+		String secretKey = "maSuperCleSecrete123maSuperCleSecrete123";
+		String message = "Voici une chaîne à signer";
+		//Génération du JWT avec payload
+		String jwt = Jwts.builder()
+						.setSubject("TITI")
+						.claim("message : ", message)
+						.setIssuedAt(new Date())
+						.signWith(SignatureAlgorithm.HS256, secretKey.getBytes())
+						.compact();
+		System.out.printf(" JWT : " + jwt);
+		//Décodage vérification JWT
+		Claims claims = Jwts.parser()
+						.setSigningKey(secretKey.getBytes())
+						.parseClaimsJws(jwt)
+						.getBody();
+		System.out.printf("\n Message extrait du JWT : " + claims.get("message"));
 
 		SpringApplication.run(PorjetSecurityApplication.class, args);
 	}

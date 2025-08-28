@@ -16,7 +16,6 @@ public class UserApp {
     @Column(unique = true)
     private String username;
 
-
     private String password;
 
     public UserApp(String username, String password) {

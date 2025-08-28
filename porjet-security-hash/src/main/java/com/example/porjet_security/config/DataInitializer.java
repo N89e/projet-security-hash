@@ -5,6 +5,7 @@ import com.example.porjet_security.items.UserApp;
 import com.example.porjet_security.repository.ArticleRepository;
 import com.example.porjet_security.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -12,11 +13,11 @@ import org.springframework.stereotype.Component;
 public class DataInitializer implements CommandLineRunner {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
     private final ArticleRepository articleRepository;
 
     public DataInitializer(UserRepository userRepository,
-                           PasswordEncoder passwordEncoder,
+                           BCryptPasswordEncoder passwordEncoder,
                            ArticleRepository articleRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
