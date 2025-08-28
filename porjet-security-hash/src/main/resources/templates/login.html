@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <title>Connexion</title>
+</head>
+<body>
+<h2>Connexion</h2>
+<form class="row g-3" th:action="@{/login}" method="post">
+    <div class="col-md-4">
+        <label class="form-label">User :</label>
+        <input type="text" class="form-control" name="username" /><br/>
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Mot de passe :</label>
+        <input type="password" class="form-control" name="password" /><br/>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Se connecter</button>
+    </div>
+</form>
+<p>
+    Créer un compte ? <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" th:href="@{/register}">Créer</a>
+</p>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <meta charset="UTF-8" />
+    <title>Inscription</title>
+</head>
+<body>
+<h1>Créer un nouveau compte</h1>
+
+<form class="row g-3" th:action="@{/register}" method="post" th:object="${userApp}">
+    <div class="col-md-4">
+        <label for="user" class="form-label">Titre :</label>
+        <input id="user" class="form-control" type="text" th:field="*{username}" placeholder="Nom d'utilisateur" required />
+    </div>
+    <div>
+        <label for="pw" class="form-label">Titre :</label>
+        <input id="pw" class="form-control" type="password" th:field="*{password}" placeholder="Mot de passe" required />
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-primary" type="submit">S'inscrire</button>
+    </div>
+</form>
+
+
+<p>
+    Déjà un compte ? <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" th:href="@{/login}">Se connecter</a>
+</p>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
